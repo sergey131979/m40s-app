@@ -15,7 +15,9 @@ jobs:
 
       - name: Unzip project code
         run: |
-          unzip -o *.zip
+          mkdir -p extracted_src
+          unzip -q *.zip -d extracted_src
+          cp -r extracted_src/*/* . || cp -r extracted_src/* .
           ls -la
 
       - name: Set up JDK 17
